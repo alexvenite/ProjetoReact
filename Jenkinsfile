@@ -2,7 +2,17 @@ pipeline {
     agent any
 
     stages {
-         stage('Build Docker Image') {
+
+        stage('Test') {
+            steps {
+                script {
+                     sh 'npm test'
+                }
+            }
+        }
+
+
+        stage('Build Docker Image') {
             steps {
                 script {
                     //dockerImage = docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}" , ".")
