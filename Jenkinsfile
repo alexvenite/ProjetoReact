@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     
-                    dockerapp = docker.build(DOCKER_IMAGE, '-f ./my-app/Dockerfile')
+                    dockerapp = docker.build(DOCKER_IMAGE, '-f ./Dockerfile  C:\Codes\Pipeline\my-app')
                 }
             }
         }
