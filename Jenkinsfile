@@ -1,11 +1,16 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "alexvenite/react:${env.BUILD_ID}"
+    }
+
     stages {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerapp = docker.build("alexvenite/react:${env.BUILD_ID}", '-f ./Dockerfile ./my-app')
+                    
+                    dockerapp = docker.build(DOCKER_IMAGE, '-f ./my-app/Dockerfile ./my-app')
                 }
             }
         }
