@@ -10,7 +10,7 @@ pipeline {
          stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}")
+                    dockerImage = docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}" , "my-app/")
                 }
             }
         }
