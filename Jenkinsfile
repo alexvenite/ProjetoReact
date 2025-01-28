@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_HUB_REPO = "alexvenite/react" // substitua com seu usuário e repositório no Docker Hub
+        DOCKER_HUB_REPO = "alexvenite/react:${env.BUILD_ID}" // substitua com seu usuário e repositório no Docker Hub
         IMAGE_NAME = "my-react-app"
     }
 
