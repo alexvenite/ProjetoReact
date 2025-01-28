@@ -4,21 +4,27 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'echo "Executando o buid da minha imagem"'
+                script {
+                    dockerapp = docker.build("alexvenite/react:${env.BUILD_ID}", '-f ./Dockerfile ./src')
                 }
             }
-        
+        }
 
         stage('Push Docker Image') {
             steps {
-                sh 'echo "Esse é o push da minha imagem para o DockerHub"'    
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                        dockerapp.push('latest')
+                        dockerapp.push("${env.BUILD_ID}")
+                    }
                 }
             }
+        }     
 
         stage('Deploy no Kubernetes') {
             steps {
                 sh 'echo "Esse é o deployment no Kubernetes"'    
                 }
-            }    
-    }     
+            }   
+    }
 }
