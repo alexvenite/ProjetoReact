@@ -7,7 +7,6 @@ pipeline {
          stage('Dependencias') {
             steps {
                 script {
-                    sh 'npm update'
                     sh 'npm install'              
                 }
             }
