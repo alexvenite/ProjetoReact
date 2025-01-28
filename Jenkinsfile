@@ -3,21 +3,21 @@ pipeline {
 
     stages {
 
-        stage('Test') {
-            steps {
-                script {
-                    sh 'npm install'
-                    sh 'npm test'
-                }
-            }
-        }
-
 
         stage('Build Docker Image') {
             steps {
                 script {
                     //dockerImage = docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}" , ".")
                     dockerapp = docker.build("alexvenite/react:${env.BUILD_ID}", ".")
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                script {
+                    sh 'npm install'
+                    sh 'npm test'
                 }
             }
         }
