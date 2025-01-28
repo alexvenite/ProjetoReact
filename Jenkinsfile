@@ -1,16 +1,12 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKER_HUB_REPO = "alexvenite/react:${env.BUILD_ID}" // substitua com seu usuário e repositório no Docker Hub
-        IMAGE_NAME = "my-react-app"
-    }
-
     stages {
          stage('Build Docker Image') {
             steps {
                 script {
-                    dockerImage = docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}" , ".")
+                    //dockerImage = docker.build("${DOCKER_HUB_REPO}:${IMAGE_NAME}" , ".")
+                    dockerapp = docker.build("alexvenite/react:${env.BUILD_ID}", ".")
                 }
             }
         }
