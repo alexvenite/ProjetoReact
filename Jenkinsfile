@@ -5,7 +5,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    dockerapp = docker.build("alexvenite/react:${env.BUILD_ID}", '-f ./Dockerfile ./src')
+                    dockerapp = docker.build("alexvenite/react:${env.BUILD_ID}", '-f ./Dockerfile ./my-app')
                 }
             }
         }
