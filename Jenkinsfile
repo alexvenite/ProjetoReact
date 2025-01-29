@@ -4,14 +4,13 @@ pipeline {
     stages {
 
 
-         stage('Dependencias') {
+         stage('Install Dependencies') {
             steps {
                 script {
                     sh 'npm install'              
                 }
             }
         }
-
 
          stage('Test') {
             steps {
@@ -20,7 +19,6 @@ pipeline {
                 }
             }
         }
-
 
         stage('Build Docker Image') {
             steps {
