@@ -7,7 +7,8 @@ pipeline {
             steps {
                 script {
                     sh 'npm install'
-                    sh 'npm install @testing-library/jest-dom@latest --save-dev'             
+                    sh 'npm install @testing-library/jest-dom@latest --save-dev'
+                    sh 'npm update react-scripts'           
                 }
             }
         }
