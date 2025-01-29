@@ -12,6 +12,7 @@ pipeline {
                     npm -v
                 '''
             }
+        }
 
          stage('Install Dependencies') {
             steps {
