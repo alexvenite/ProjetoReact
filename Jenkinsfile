@@ -3,17 +3,6 @@ pipeline {
 
     stages {
 
-        stage('Use Node.js 16') { // Ou a versão que você precisa
-            steps {
-                sh '''
-                    nvm install 16
-                    nvm use 16
-                    node -v
-                    npm -v
-                '''
-            }
-        }
-
          stage('Install Dependencies') {
             steps {
                 script {
